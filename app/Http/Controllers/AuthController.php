@@ -38,7 +38,7 @@ class AuthController extends Controller
             ], Response::HTTP_UNAUTHORIZED);      
        };
        $user = $request->user();
-       $jwt = $user->createToken('token')->plainTextToken;
+       $jwt = $user->createToken('token', ['admin'])->plainTextToken;
        $cookie = cookie('jwt', $jwt, 60*24);
 
        return response([
